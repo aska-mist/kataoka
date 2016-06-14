@@ -20,12 +20,13 @@ public class textbox extends Application {
     Button button;
 
     public static void main (String[]args){
+
         launch(args);
     }
 
     public void start(Stage stage) throws Exception {
         label = new Label("This is JavaFX!");
-        field = new TextField("aaaaa");
+        field = new TextField("aska");
         button = new Button("Click");
 
         button.setOnAction(new EventHandler<ActionEvent>() {
@@ -34,7 +35,7 @@ public class textbox extends Application {
 
                 String msg =("He is seki");
 
-                label.setText(msg);
+                field.setText(msg);
 
             }
         });
