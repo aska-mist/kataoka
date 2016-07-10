@@ -1,12 +1,14 @@
 package sample;
 
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -30,35 +32,28 @@ public class Controller {
     private Button helloButton;
     @FXML
     private Label helloLabel;
+    @FXML
+    private TextField textCode;
+
 
     @FXML
     public void onHelloButtonClicked(ActionEvent event) throws IOException {
 
-        JavaNetHttpClient JN = new JavaNetHttpClient();
 
-        JN.httpClient();
+
+        String otenkiCode = textCode.getText();
+
+        setCode(otenkiCode);
 
     }
 
-    public class JavaNetHttpClient {
-
-
-        public void httpClient() throws IOException {
-
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-            String code = bufferedReader.readLine();
-
-            executeGet(code);
-        }
-
-        public void executeGet(String value) throws IOException {
+    public void setCode(String value) throws IOException {
 
             System.out.println("===== HTTP GET Start =====");
 
             try {
 
-                URL url = new URL("http://weather.livedoor.com/forecast/webservice/json/v1?city=" +value);
+                URL url = new URL("http://weather.livedoor.com/forecast/webservice/json/v1?city=" + value );
 
                 HttpURLConnection connection = null;
 
@@ -90,4 +85,3 @@ public class Controller {
 
 
     }
-}
